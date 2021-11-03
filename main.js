@@ -4,6 +4,7 @@ import { updateResultScreen } from './lib/ui.js';
 import { checkGame } from './lib/rock-paper-scissors.js';
 import { computerPlay } from './lib/rock-paper-scissors.js';
 
+console.log('Hello');
 /** Hámarks fjöldi best-of leikja, ætti að vera jákvæð heiltala stærri en 0 */
 const MAX_BEST_OF = 10;
 
