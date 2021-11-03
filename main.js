@@ -1,5 +1,6 @@
 // TODO hér vantar að sækja viðeigandi föll úr öðrum modules
 import { show } from './lib/ui.js';
+import { createButtons } from './lib/ui.js';
 
 /** Hámarks fjöldi best-of leikja, ætti að vera jákvæð heiltala stærri en 0 */
 const MAX_BEST_OF = 10;
@@ -70,6 +71,7 @@ function playRound(player) {
  */
 function round(e) {
   // TODO útfæra
+  show('play');
 }
 
 // Takki sem byrjar leik
@@ -78,11 +80,13 @@ document
   .addEventListener('click', () => show('rounds'));
 
 // Búum til takka
-// createButtons(MAX_BEST_OF, round);
+createButtons(MAX_BEST_OF, round);
 
 // Event listeners fyrir skæri, blað, steinn takka
 // TODO
-document.querySelector('button.scissor')
+document
+  .querySelector('button.scissor')
+  .addEventListener('click', () => 0)
 
 /**
  * Uppfærir stöðu yfir alla spilaða leiki þegar leik lýkur.
@@ -103,3 +107,6 @@ function finishGame() {
 // Næsta umferð og ljúka leik takkar
 document.querySelector('button.finishGame').addEventListener('click', finishGame);
 // TODO takki sem fer með í næstu umferð
+document.querySelector('button.nextRound').addEventListener('click', () => 0);
+
+show('start');

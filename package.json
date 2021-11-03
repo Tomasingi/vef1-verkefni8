@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "scripts.js",
   "scripts": {
-    "dev": "browser-sync start --server --files main.js **/*.js styles.css index.html"
+    "dev": "browser-sync start --server --files main.js **/*.js styles.css index.html",
+    "build:html": "cp index.html build/index.html",
+    "build:js": "cp main.js build/main.js && cp -r lib/ build/lib",
+    "build": "npm run build:html && npm run build:js"
   },
   "keywords": [],
   "author": "",
