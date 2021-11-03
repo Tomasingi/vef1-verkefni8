@@ -1,5 +1,5 @@
-import { show } from './lib/ui.js';
 import { createButtons } from './lib/ui.js';
+import { show } from './lib/ui.js';
 import { updateResultScreen } from './lib/ui.js';
 import { checkGame } from './lib/rock-paper-scissors.js';
 import { computerPlay } from './lib/rock-paper-scissors.js';
@@ -49,6 +49,7 @@ const games = [];
 function playRound(player) {
   // Komumst að því hvað tölva spilaði og athugum stöðu leiks
   let computer = computerPlay();
+  const roundResult = checkGame(player, computer);
 
   // Uppfærum result glugga áður en við sýnum, hér þarf að importa falli
   updateResultScreen({
@@ -62,7 +63,9 @@ function playRound(player) {
   });
 
   // Uppfærum teljara ef ekki jafntefli, verðum að gera eftir að við setjum titil
-
+  if (roundResult !== 0) {
+    currentRound++;
+  }
 
   // Ákveðum hvaða takka skuli sýna
 
@@ -110,10 +113,16 @@ function finishGame() {
   // Uppfærum stöðu
 
   // Bætum leik við lista af spiluðum leikjum
+  games.push({
+    player: playerWins,
+    computer: computerWins,
+    win: (playerWins > computerWins),
+  })
 
   // Núllstillum breytur
 
   // Byrjum nýjan leik!
+  show('rounds');
 }
 
 // Næsta umferð og ljúka leik takkar
