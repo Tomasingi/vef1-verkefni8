@@ -68,6 +68,18 @@ function playRound(player) {
   }
 
   // Ákveðum hvaða takka skuli sýna
+  const finishGame = document.querySelector('.button.finishGame');
+  const nextRound = document.querySelector('.button.nextRound');
+
+  finishGame.classList.add('hidden');
+  nextRound.classList.add('hidden');
+
+  const threshold = totalRounds / 2;
+  if (playerWins > threshold || computerWins > threshold) {
+    finishGame.classList.remove('hidden');
+  } else {
+    nextRound.classList.remove('hidden');
+  }
 
   // Sýnum niðurstöðuskjá
 }
