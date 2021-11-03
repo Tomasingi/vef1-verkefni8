@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "browser-sync start --server --files main.js **/*.js styles.css index.html",
     "build:html": "cp index.html build/index.html",
+    "build:css": "cp styles.css build/styles.css",
     "build:js": "cp main.js build/main.js && cp -r lib/ build/lib",
     "build": "npm run build:html && npm run build:js"
   },

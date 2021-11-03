@@ -1,6 +1,8 @@
-// TODO hér vantar að sækja viðeigandi föll úr öðrum modules
 import { show } from './lib/ui.js';
 import { createButtons } from './lib/ui.js';
+import { updateResultScreen } from './lib/ui.js';
+import { checkGame } from './lib/rock-paper-scissors.js';
+import { computerPlay } from './lib/rock-paper-scissors.js';
 
 /** Hámarks fjöldi best-of leikja, ætti að vera jákvæð heiltala stærri en 0 */
 const MAX_BEST_OF = 10;
@@ -46,11 +48,12 @@ const games = [];
  */
 function playRound(player) {
   // Komumst að því hvað tölva spilaði og athugum stöðu leiks
+  let computer = computerPlay();
 
   // Uppfærum result glugga áður en við sýnum, hér þarf að importa falli
   updateResultScreen({
     player: player.toString(),
-    computer,
+    computer: computer.toString(),
     result,
     currentRound,
     totalRounds,
@@ -59,6 +62,7 @@ function playRound(player) {
   });
 
   // Uppfærum teljara ef ekki jafntefli, verðum að gera eftir að við setjum titil
+
 
   // Ákveðum hvaða takka skuli sýna
 
@@ -71,6 +75,8 @@ function playRound(player) {
  */
 function round(e) {
   // TODO útfæra
+  totalRounds = e;
+  currentRound = 0;
   show('play');
 }
 
@@ -86,7 +92,13 @@ createButtons(MAX_BEST_OF, round);
 // TODO
 document
   .querySelector('button.scissor')
-  .addEventListener('click', () => 0)
+  .addEventListener('click', () => playRound(1));
+document
+  .querySelector('button.paper')
+  .addEventListener('click', () => playRound(2));
+document
+  .querySelector('button.rock')
+  .addEventListener('click', () => playRound(3));
 
 /**
  * Uppfærir stöðu yfir alla spilaða leiki þegar leik lýkur.
@@ -107,6 +119,6 @@ function finishGame() {
 // Næsta umferð og ljúka leik takkar
 document.querySelector('button.finishGame').addEventListener('click', finishGame);
 // TODO takki sem fer með í næstu umferð
-document.querySelector('button.nextRound').addEventListener('click', () => 0);
+document.querySelector('button.nextRound').addEventListener('click', round);
 
 show('start');
