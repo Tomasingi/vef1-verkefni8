@@ -89,7 +89,6 @@ function playRound(player) {
  * @param {Event} e Upplýsingar um atburð
  */
 function round(e) {
-  // TODO útfæra
   totalRounds = e;
   currentRound = 0;
   show('play');
